@@ -20,6 +20,11 @@ import java.util.List;
 import java.util.Map;
 
 public class ListViewActivity extends AppCompatActivity {
+
+    // MyList constants
+    public static final String TEXT = "text";
+    public static final String LEN = "len";
+
     List<Map<String, String>> simpleAdapterContent = new ArrayList<>();
     private SharedPreferences myListSharedPref;
     BaseAdapter listContentAdapter;
@@ -84,7 +89,7 @@ public class ListViewActivity extends AppCompatActivity {
                 this,
                 simpleAdapterContent,
                 R.layout.my_list_item,
-                new String[]{"text", "len"}, new int[]{R.id.textView1, R.id.textView2});
+                new String[]{TEXT, LEN}, new int[]{R.id.textView1, R.id.textView2});
     }
 
     void prepareContent(String listText) {
@@ -94,8 +99,8 @@ public class ListViewActivity extends AppCompatActivity {
 
         for (String str : strList) {
             Map<String, String> row = new HashMap<>();
-            row.put("text", str);
-            row.put("len", String.valueOf(str.length()));
+            row.put(TEXT, str);
+            row.put(LEN, String.valueOf(str.length()));
 
             simpleAdapterContent.add(row);
         }
